@@ -24,7 +24,7 @@ echo "Found seeds: "$SEEDS
 # Setup Cassandra
 sed -i -e "s/^listen_address.*/listen_address: $IP/" ${CASSANDRA_CONF}/cassandra.yaml
 sed -i -e "s/^rpc_address.*/rpc_address: $IP/" ${CASSANDRA_CONF}/cassandra.yaml
-sed -i -e "s/- seeds: \"\"/- seeds: \"$SEEDS\"/" ${CASSANDRA_CONF}/cassandra.yaml
+sed -i -e "s/- seeds:.*/- seeds: \"$SEEDS\"/" ${CASSANDRA_CONF}/cassandra.yaml
 sed -i -e "s/# JVM_OPTS=\"$JVM_OPTS -Djava.rmi.server.hostname=<public name>\"/ JVM_OPTS=\"$JVM_OPTS -Djava.rmi.server.hostname=$IP\"/" ${CASSANDRA_CONF}/cassandra-env.sh
 
 # Cassandra startup
