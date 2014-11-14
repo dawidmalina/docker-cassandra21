@@ -27,6 +27,9 @@ sed -i -e "s/^rpc_address.*/rpc_address: $IP/" ${CASSANDRA_CONF}/cassandra.yaml
 sed -i -e "s/- seeds:.*/- seeds: \"$SEEDS\"/" ${CASSANDRA_CONF}/cassandra.yaml
 sed -i -e "s/# JVM_OPTS=\"$JVM_OPTS -Djava.rmi.server.hostname=<public name>\"/ JVM_OPTS=\"$JVM_OPTS -Djava.rmi.server.hostname=$IP\"/" ${CASSANDRA_CONF}/cassandra-env.sh
 
+# fix agent library failed to init: instrument
+sed -i -e "s/jamm-0.2.6/jamm-0.2.8/" ${CASSANDRA_HOME}/cassandra.in.sh
+
 # Cassandra startup
 echo -n "Starting Cassandra: "
 $CASSANDRA_PROG -f -p $pid_file
