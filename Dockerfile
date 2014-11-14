@@ -7,6 +7,7 @@ MAINTAINER Dawid Malinowski <dawidmalina@gmail.com>
 ENV REFRESHED_AT 2014-11-11
 
 ADD start.sh /bin/start.sh
+ADD create-db.sh /bin/create-db.sh
 
 ADD datastax.repo /etc/yum.repos.d/datastax.repo
 
