@@ -18,4 +18,5 @@ IP=$(head -1 /etc/hosts |awk '{print $1}')
 
 echo "${IP} - keyspace name $1"
 
-cqlsh ${IP} 9042 -e "CREATE KEYSPACE ${NAME} WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'DC1' : ${REPLICAS} }"
+#cqlsh ${IP} 9042 -e "CREATE KEYSPACE ${NAME} WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'DC1' : ${REPLICAS} }"
+cqlsh ${IP} 9042 -e "CREATE KEYSPACE ${NAME} WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : ${REPLICAS} }"

@@ -12,7 +12,8 @@ CASSANDRA_PROG=/usr/sbin/cassandra
 
 # Check ip address
 IP=`hostname --ip-address`
-SEEDS=`env | grep CASS[[:digit:]]_PORT_9042_TCP_ADDR | sed 's/CASS[[:digit:]]_PORT_9042_TCP_ADDR=//g' | sed -e :a -e N -e 's/\n/,/' -e ta`
+#SEEDS=`env | grep CASS[[:digit:]]_PORT_9042_TCP_ADDR | sed 's/CASS[[:digit:]]_PORT_9042_TCP_ADDR=//g' | sed -e :a -e N -e 's/\n/,/' -e ta`
+SEEDS=`env | grep [[:digit:]]_PORT_9042_TCP_ADDR | sed 's/.*S[[:digit:]]_PORT_9042_TCP_ADDR=//g' | sed -e :a -e N -e 's/\n/,/' -e ta`
 
 if [ -z "$SEEDS" ]; then
   SEEDS=$IP
